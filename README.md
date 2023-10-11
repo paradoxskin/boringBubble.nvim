@@ -5,14 +5,14 @@
 >   echo BORING bubble string like **o 0 O** in vim coding.
 >
 >   Bubble will change when you coding.
-
-
+>
+>   Ported from [vimscript version](https://github.com/paradoxskin/boringBubble.vim)
 
 💥 warning: This plugin may affect your programming efficiency
 
 ### Preview
 
-TODO
+![no_config](./preview/no_config.gif)
 
 ### Installation
 
@@ -50,11 +50,11 @@ vim.g.bubble_len = 8
 
 it will be like:
 
-TODO
+![example_1](./preview/example_1.gif)
 
 Of couse, you can use [nerd charaters](https://www.nerdfonts.com/)
 
-TODO
+![example_2](./preview/example_2.gif)
 
 *   You can get the Bubble by `g:bubble`. So it can also echoed in your status-line, if you use [lightline.vim](https://github.com/itchyny/lightline.vim)  or other
     my config:
@@ -71,18 +71,24 @@ TODO
             bubble = '%{g:bubble}'
         },
     }
-
+    
     -- boringBubble.nvim
     vim.g.bubble_map = {" ", " "}
     vim.g.bubble_len = 3
     vim.g.bubble_show = 0
     ```
-    TODO
+    ![example_3](./preview/example_3.gif)
 
     For pure:
 
     ```vim
-    set statusline+=%{g:boringBubble#Bubble}
+    set statusline+=%{g:bubble}
     ```
+    
+    ![example_4](./preview/example_4.gif)
 
 ✨ ENJOY:D
+
+
+
+Welcome PR if you have any interesting ideas.
