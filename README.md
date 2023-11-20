@@ -27,25 +27,50 @@ If you have no experience in installing plugins, I recommend you install them us
     `git clone https://github.com/paradoxskin/boringBubble.nvim.git`
 
     you can also use git-submodule to manage it.
+    
+    Then, in your config file:
+    
+    ```lua
+    require("boringBubble").setup()
+    ```
+    
+    
 
 ### Usage
 
-*   `g:bubble_map`, a table of single Bubbles you want to appear
-*   `g:bubble_len`, **length** of the Bubble String
-*   `g:bubble_show`, do you want to echo it at bottom ? 0 to disable and 1 to enable, default 1
-
-For example, add it in your `init.vim`
-
-```vim
-let g:bubble_map=["@", "a"]
-let g:bubble_len=8
-```
-
-or `init.lua`
+default options:
 
 ```lua
-vim.g.bubble_map = {"@", "a"}
-vim.g.bubble_len = 8
+require("boringBubble").setup({
+    bubble = {
+        map = {"o", "O", "0"},
+        len = 5,
+        event = {"TextChanged", "TextChangedI"} -- autocmd
+    },
+    fun = {
+        draw = function (bubble) -- called after generate new bubble
+            vim.g.bubble = bubble
+        end,
+        prize = function (number) -- called when all char same
+        end
+    }
+})
+```
+
+For example, add it in your config file:
+
+```lua
+require("boringBubble").setup({
+    bubble = {
+        map = {"@", "a"},
+        len = 8
+    },
+    fun = {
+        draw = function(bubble)
+            print(bubble)
+        end
+    }
+}
 ```
 
 it will be like:
@@ -73,14 +98,17 @@ Of couse, you can use [nerd charaters](https://www.nerdfonts.com/)
     }
     
     -- boringBubble.nvim
-    vim.g.bubble_map = {" ", " "}
-    vim.g.bubble_len = 3
-    vim.g.bubble_show = 0
+    require("boringBubble").setup({
+        bubble = {
+            map = {" ", " "},
+            len = 3
+        }
+    }
     ```
     ![example_3](./preview/example_3.gif)
-
+    
     For pure:
-
+    
     ```vim
     set statusline+=%{g:bubble}
     ```
